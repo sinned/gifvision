@@ -64,7 +64,7 @@
 	<style type="text/css">
 		body {background:silver;margin:0;padding:0;}
 		div#click {margin:0;padding:0;width:100%;height:500px;cursor:pointer;}
-		div#sponsor {background:white;width:100%;padding:5px;font-family:'Lato', sans-serif;text-align:center;}
+		div#sponsor {display:none;background:white;width:100%;padding:5px;font-family:'Lato', sans-serif;text-align:center;}
 	</style>
   </head>
 
