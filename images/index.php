@@ -50,7 +50,18 @@ array_push($images, array("url" => "http://25.media.tumblr.com/tumblr_m39tl1ZIil
 array_push($images, array("url" => "http://25.media.tumblr.com/tumblr_m5geerw57T1qbhetko1_500.gif"));
 array_push($images, array("url" => "http://25.media.tumblr.com/tumblr_m78p1oIKt61qdvrs8o1_500.gif"));
 array_push($images, array("url" => "http://24.media.tumblr.com/tumblr_m5671ip4DS1qg39ewo1_500.gif"));
-
+array_push($images, array("title" => "Mitt Shakin' it", "url" => "http://i.imgur.com/MbmpG.gif"));
+array_push($images, array("title" => "Slap It", "url" => "http://mlkshk.com/r/KST4"));
+array_push($images, array("title" => "Beach Dance", "url" => "http://mlkshk.com/r/KST7"));
+array_push($images, array("title" => "Betty Shake", "url" => "http://mlkshk.com/r/HFKZ"));
+array_push($images, array("title" => "Halp!", "url" => "http://mlkshk.com/r/5R4G"));	
+array_push($images, array("title" => "Trainy Trainy", "url" => "http://mlkshk.com/r/4ZX6"));
+array_push($images, array("title" => "Sparkly", "url" => "http://mlkshk.com/r/2DDN"));
+array_push($images, array("title" => "Cinemagraph", "url" => "http://mlkshk.com/r/1PIZ"));
+array_push($images, array("title" => "Nearsighted Kid to the Pool", "url" => "http://mlkshk.com/r/2DGN"));
+array_push($images, array("title" => "Close It", "url" => "http://mlkshk.com/r/UJF"));
+array_push($images, array("title" => "OMG hipsters", "url" => "http://mlkshk.com/r/CRK"));
+array_push($images, array("title" => "breakfast dance", "url" => "http://mlkshk.com/r/7UB"));		
 			
 $images_json = json_encode(
 					array(
