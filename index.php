@@ -22,6 +22,9 @@
 				if (imagecount == 10) {
 					$("#sponsor").fadeIn();
 				}
+				if (imagecount > 20) {
+					$("#sponsor").fadeOut();
+				}
 			}
 			
 			$(document).ready(function() {
