@@ -19,10 +19,10 @@
 					console.log("no stretch");
 				}
 				imagecount++;
-				if (imagecount == 10) {
+				if (imagecount == 7) {
 					$("#sponsor").fadeIn();
 				}
-				if (imagecount > 20) {
+				if (imagecount == 20) {
 					$("#sponsor").fadeOut();
 				}
 			}
