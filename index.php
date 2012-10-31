@@ -128,7 +128,7 @@
 					margin:0;padding:0;font-family:'Adamina', Georgia, Times, serif;font-size:12px;}
 			div#click {margin:0;padding:0;width:100%;height:100%;cursor:pointer;}
 			div#bottom {position: absolute; bottom: 0; left: 0;width:100%;border-top: 3px solid #7a9391; background:#bfd2d0;
-				min-width: 650px;
+				min-width: 700px;
 			}
 			div#controls{margin:5px;}
 			div#sponsor {float:right;margin: 7px 5px;font-size:12px;}
