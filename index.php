@@ -12,47 +12,68 @@
 			GV.images = [];
 					
 			$(document).ready(function() {
-				//$("#sponsor").hide();
 				$("#bottom").hide();
 
+				function loadImages() {
+					$.getJSON("images",
+					  {
+					    format: "json"
+					  },
+					  function(data) {
+					    
+					    // build the array of images
+					    for (var i = 0; i < data.data.length; i++) {
+						    GV.images[i] = [data.data[i].url];
+					    }
+					    startGifvision();
+					  });					
+				}
+
 				function stretchImage() {
+					var image;
+				
 					if (GV.images.length > 0) {
-						var image = GV.images[Math.floor(Math.random()*GV.images.length)]	
-						console.log("stretch: " + image);
+						//image = GV.images[Math.floor(Math.random()*GV.images.length)];
+						image = GV.images[imagecount];	
+						console.log("stretch: " + image );
+						//$("#backstretch").remove();
 						$.backstretch(image); 				
 						$("#current-image").html('<a target="_blank" href="' + image + '">Link</a>');
 					} else {
 						console.log("no stretch");
 					}
+					
 					imagecount++;
 					if (imagecount == 7) {
 						$("#bottom").slideDown();
 					}
+					
+					// reset imagecount if it's bigger than the avail images.
+					if (imagecount >= GV.images.length) {
+						console.log("loading images");
+						imagecount = 0;
+						loadImages();
+					} else {
+						(new Image()).src = GV.images[imagecount]; // preload next image.
+						if (imagecount+1 < GV.images.length) {
+							(new Image()).src = GV.images[imagecount+1];
+						}
+						
+					}
 				}
 				
 				function startGifvision() {
+					clearInterval(gifVision);
 					stretchImage();
 					gifVision = setInterval(function() {
 						stretchImage();
-					},2000);				
+					},2333);				
 				}
-			
-				$.getJSON("images",
-				  {
-				    format: "json"
-				  },
-				  function(data) {
-				    
-				    // build the array of images
-				    for (var i = 0; i < data.data.length; i++) {
-					    GV.images[i] = [data.data[i].url];
-				    }
-					stretchImage();
-				  });
 				
 				$("#click").on("click", function() {
 					stretchImage();
 				});
+				
 				
 				$("button#play-gifvision").hide();
 				$("button#pause-gifvision").on("click", function() {
@@ -74,9 +95,8 @@
 				$("div#light").on("click", function () {
 					$("#bottom").slideDown();
 				});								
-			
-				startGifvision();
-			
+							
+				loadImages();
 			});
 		</script>
 		<script type="text/javascript">

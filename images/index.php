@@ -5,7 +5,7 @@
 	array_push($images, array("url" => "http://mlkshk.com/r/KSGB"));
 	array_push($images, array("url" => "http://24.media.tumblr.com/tumblr_maimzuSCCz1qgjlj8o1_500.gif"));
 	array_push($images, array("url" => "http://i.imgur.com/brpgk.gif"));
-	array_push($images, array("url" => "http://donttrysohard.files.wordpress.com/2010/12/angry-dwight.gif"));
+	//array_push($images, array("url" => "http://donttrysohard.files.wordpress.com/2010/12/angry-dwight.gif"));
 	array_push($images, array("url" => "http://i.minus.com/iblNcxynRn8sdR.gif"));
 	array_push($images, array("url" => "http://i.imgur.com/UKlN7.gif"));
 	array_push($images, array("url" => "http://i.imgur.com/4xGNI.gif"));
@@ -63,6 +63,10 @@
 	array_push($images, array("title" => "OMG hipsters", "url" => "http://mlkshk.com/r/CRK"));
 	array_push($images, array("title" => "breakfast dance", "url" => "http://mlkshk.com/r/7UB"));		
 	array_push($images, array("title" => "PSY trash dance", "url" => "http://i.imgur.com/4BpJF.gif"));
+
+				
+	//shuffle the array
+	shuffle($images);			
 				
 	$images_json = json_encode(
 						array(
