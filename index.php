@@ -143,7 +143,7 @@
         <div id="click"></div>
        	<div id="light"><img src="img/plus-gray.png" alt="Open Controls" /></div>
         <div id="bottom">
-	        <div id="sponsor">If you like this, please visit my sponsor, <a href="http://www.bureauoftrade.com/">Bureau of Trade</a>. Thanks!</div>
+	        <div id="sponsor">If you like this, please check out my other site, <a href="http://www.bureauoftrade.com/">Bureau of Trade</a>. Thanks!</div>
         	<div id="controls">
         		<button id="close">Close</button>
         		<button id="pause-gifvision">Pause GifVision</button><button id="play-gifvision">Play GifVision</button>
