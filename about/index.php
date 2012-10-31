@@ -31,14 +31,26 @@
 	</head>
 
   <body>
+  
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>  
+  
   	<div id="main">
   		<img src="../img/gv.png" alt="GifVision" /><br />
   		<h2>GifVision, by <a href="http://www.dennisyang.com/">dennis</a>.</h2>
 	  	More to come...
   		<br /><br />
   		<a href="../">Back to GifVision..</a>
-
-		
+  		<br /><br />
+  		<div class="fb-like" data-href="http://www.gifvision.com/" data-send="false" data-width="200" data-show-faces="false"></div>
+  		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.gifvision.com/" data-text="GifVision.">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   	</div>
   </body>
 </html>
