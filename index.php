@@ -6,29 +6,36 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="js/jquery.backstretch.min.js"></script>
 		<script type="text/javascript">
+			var gifVision;
 			var imagecount = 0;
 			var GV = {};
 			GV.images = [];
-			
-			function stretchImage() {
-				if (GV.images.length > 0) {
-					var image = GV.images[Math.floor(Math.random()*GV.images.length)]	
-					console.log("stretch: " + image);
-					$.backstretch(image); 				
-				} else {
-					console.log("no stretch");
-				}
-				imagecount++;
-				if (imagecount == 7) {
-					$("#sponsor").fadeIn();
-				}
-				if (imagecount == 20) {
-					$("#sponsor").fadeOut();
-				}
-			}
-			
+					
 			$(document).ready(function() {
-				$("#sponsor").hide();
+				//$("#sponsor").hide();
+				$("#bottom").hide();
+
+				function stretchImage() {
+					if (GV.images.length > 0) {
+						var image = GV.images[Math.floor(Math.random()*GV.images.length)]	
+						console.log("stretch: " + image);
+						$.backstretch(image); 				
+						$("#current-image").html('<a target="_blank" href="' + image + '">Link</a>');
+					} else {
+						console.log("no stretch");
+					}
+					imagecount++;
+					if (imagecount == 7) {
+						$("#bottom").slideDown();
+					}
+				}
+				
+				function startGifvision() {
+					stretchImage();
+					gifVision = setInterval(function() {
+						stretchImage();
+					},2000);				
+				}
 			
 				$.getJSON("images",
 				  {
@@ -46,11 +53,29 @@
 				$("#click").on("click", function() {
 					stretchImage();
 				});
+				
+				$("button#play-gifvision").hide();
+				$("button#pause-gifvision").on("click", function() {
+					clearInterval(gifVision);
+					$("button#pause-gifvision").hide();
+					$("button#play-gifvision").show();
+				});		
+				
+				$("button#play-gifvision").on("click", function() {
+					startGifvision();
+					$("button#play-gifvision").hide();
+					$("button#pause-gifvision").show();
+				});						
+				
+				$("button#close").on("click", function() {
+					$("#bottom").slideUp();
+				});		
+				
+				$("div#light").on("click", function () {
+					$("#bottom").slideDown();
+				});								
 			
-				setInterval(function() {
-					stretchImage();
-				},2000);
-			
+				startGifvision();
 			
 			});
 		</script>
@@ -70,16 +95,29 @@
 		<link href='http://fonts.googleapis.com/css?family=Old+Standard+TT' rel='stylesheet' type='text/css'>
 		<style type="text/css">
 			html {height:100%;}
-			body {height:100%;background:silver;margin:0;padding:0;font-family:'Old Standard TT', Georgia, Times, serif;}
+			body {height:100%;background:#ffffff url('img/indian-head-test-pattern.jpg') no-repeat center;
+					margin:0;padding:0;font-family:'Old Standard TT', Georgia, Times, serif;font-size:12px;}
 			div#click {margin:0;padding:0;width:100%;height:100%;cursor:pointer;}
-			div#sponsor {border-top: 3px solid #7a9391; background:#bfd2d0;margin:0;padding:0;width:100%;position: absolute; bottom: 0; left: 0;text-align:center;}
-			div#sponsor p {margin: auto; padding: 3px 0 6px 0;font-size:14px;}
+			div#bottom {position: absolute; bottom: 0; left: 0;width:100%;border-top: 3px solid #7a9391; background:#bfd2d0;
+				min-width: 650px;
+			}
+			div#controls{margin:5px;}
+			div#sponsor {float:right;margin: 7px 5px;font-size:12px;}
+			div#light {position: absolute; bottom: 0; left: 0;cursor:pointer;margin:0 0 0 5px;}
 		</style>
 	</head>
 
-  <body bgcolor="silver">
+  <body>
         <div id="click"></div>
-        <div id="sponsor"><p>If you like this, please visit my sponsor, <a href="http://www.bureauoftrade.com/">Bureau of Trade</a>. Thanks!</p><div class="close" /></div>
+       	<div id="light"><img src="img/plus-gray.png" alt="Open Controls" /></div>
+        <div id="bottom">
+	        <div id="sponsor">If you like this, please visit my sponsor, <a href="http://www.bureauoftrade.com/">Bureau of Trade</a>. Thanks!</div>
+        	<div id="controls">
+        		<button id="close">Close</button>
+        		<button id="pause-gifvision">Pause GifVision</button><button id="play-gifvision">Play GifVision</button>
+        		Current Image: <span id="current-image"></span>
+        	</div>
+        </div>
   </body>
 </html>
 

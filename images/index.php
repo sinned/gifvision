@@ -71,5 +71,5 @@
 							"status" => 200
 						));
 	
-	header('Content-type: application/json');
+	header('Content-type: application/json;charset=utf-8');	
 	echo $images_json;
