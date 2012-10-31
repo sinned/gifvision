@@ -13,6 +13,7 @@
 					
 			$(document).ready(function() {
 				$("#bottom").hide();
+				//$("#logo").hide();
 
 				function loadImages() {
 					$.getJSON("images",
@@ -26,6 +27,7 @@
 						    GV.images[i] = [data.data[i].url];
 					    }
 					    startGifvision();
+					    _gaq.push(['_trackPageview']);
 					  });					
 				}
 
@@ -72,6 +74,7 @@
 				
 				$("#click").on("click", function() {
 					stretchImage();
+					_gaq.push(['_trackEvent', 'stretchImage', 'Advance Image', '']);
 				});
 				
 				
@@ -80,20 +83,26 @@
 					clearInterval(gifVision);
 					$("button#pause-gifvision").hide();
 					$("button#play-gifvision").show();
+					_gaq.push(['_trackEvent', 'controls', 'Pause', '']);
 				});		
 				
 				$("button#play-gifvision").on("click", function() {
 					startGifvision();
 					$("button#play-gifvision").hide();
 					$("button#pause-gifvision").show();
+					_gaq.push(['_trackEvent', 'controls', 'Play', '']);
 				});						
 				
 				$("button#close").on("click", function() {
 					$("#bottom").slideUp();
+					_gaq.push(['_trackEvent', 'controls', 'Close', '']);
+
 				});		
 				
 				$("div#light").on("click", function () {
 					$("#bottom").slideDown();
+					_gaq.push(['_trackEvent', 'controls', 'Open', '']);
+
 				});								
 							
 				loadImages();
@@ -103,7 +112,7 @@
 		
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-35961275-1']);
-		  _gaq.push(['_trackPageview']);
+		  //_gaq.push(['_trackPageview']); // moved the trackPageview up to loadImages
 		
 		  (function() {
 		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -112,11 +121,11 @@
 		  })();
 		
 		</script>
-		<link href='http://fonts.googleapis.com/css?family=Old+Standard+TT' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
 		<style type="text/css">
 			html {height:100%;}
 			body {height:100%;background:#ffffff url('img/indian-head-test-pattern.jpg') no-repeat center;
-					margin:0;padding:0;font-family:'Old Standard TT', Georgia, Times, serif;font-size:12px;}
+					margin:0;padding:0;font-family:'Adamina', Georgia, Times, serif;font-size:12px;}
 			div#click {margin:0;padding:0;width:100%;height:100%;cursor:pointer;}
 			div#bottom {position: absolute; bottom: 0; left: 0;width:100%;border-top: 3px solid #7a9391; background:#bfd2d0;
 				min-width: 650px;
@@ -124,10 +133,13 @@
 			div#controls{margin:5px;}
 			div#sponsor {float:right;margin: 7px 5px;font-size:12px;}
 			div#light {position: absolute; bottom: 0; left: 0;cursor:pointer;margin:0 0 0 5px;}
+			div#logo {position:absolute; top:0; right:0;padding:10px;}
+			div#logo img {width:30px;height:30px;}
 		</style>
 	</head>
 
   <body>
+  		<div id="logo"><a href="about/"><img src="img/gv.png" alt="GifVision" /></a></div>
         <div id="click"></div>
        	<div id="light"><img src="img/plus-gray.png" alt="Open Controls" /></div>
         <div id="bottom">
