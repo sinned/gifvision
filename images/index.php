@@ -1,5 +1,6 @@
 <?php
 	$images = array ();
+	array_push($images, array("title" => "blow it up", "url" => "http://i.imgur.com/B5wj4.gif"));
 	array_push($images, array("title" => "dancing sax kid", "url" => "http://mlkshk.com/r/KRXB"));
 	array_push($images, array("url" => "http://mlkshk.com/r/KS7M"));
 	array_push($images, array("url" => "http://mlkshk.com/r/KSGB"));
@@ -63,7 +64,7 @@
 	array_push($images, array("title" => "OMG hipsters", "url" => "http://mlkshk.com/r/CRK"));
 	array_push($images, array("title" => "breakfast dance", "url" => "http://mlkshk.com/r/7UB"));		
 	array_push($images, array("title" => "PSY trash dance", "url" => "http://i.imgur.com/4BpJF.gif"));
-
+	array_push($images, array("url" => "http://25.media.tumblr.com/tumblr_mc85zg81eZ1qeyoxro1_500.gif"));
 				
 	//shuffle the array
 	shuffle($images);			
