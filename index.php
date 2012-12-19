@@ -1,10 +1,22 @@
-<!DOCTYPE html>
+<?php
+	switch ($_SERVER['HTTP_HOST']) {
+		case 'localhost':
+			define('WEBROOT', 'http://localhost/gifvision/');
+			break;
+		default:
+			define('WEBROOT', '/');
+	}
+
+	$imagecategory = isset($_REQUEST['c']) ? urlencode(strtolower($_REQUEST['c'])) : '';
+	$image_json_url = WEBROOT . "images/$imagecategory";
+	
+?><!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>GifVision.</title>
+		<title>GifVision. <?php echo ucwords(urldecode($imagecategory)); ?></title>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="js/jquery.backstretch.min.js"></script>
+		<script src="http://gifvision.com/js/jquery.backstretch.min.js"></script>
 		<script type="text/javascript">
 			var gifVision;
 			var imagecount = 0;
@@ -16,7 +28,7 @@
 				//$("#logo").hide();
 
 				function loadImages() {
-					$.getJSON("images",
+					$.getJSON("<?php echo $image_json_url; ?>",
 					  {
 					    format: "json"
 					  },
@@ -42,7 +54,7 @@
 						$.backstretch(image); 				
 						$("#current-image").html('<a target="_blank" href="' + image + '">Link</a>');
 					} else {
-						console.log("no stretch");
+						console.log("no images");
 					}
 					
 					imagecount++;
@@ -124,7 +136,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
 		<style type="text/css">
 			html {height:100%;}
-			body {height:100%;background:#ffffff url('img/indian-head-test-pattern.jpg') no-repeat center;
+			body {height:100%;background:#ffffff url('<?php echo WEBROOT; ?>img/indian-head-test-pattern.jpg') no-repeat center;
 					margin:0;padding:0;font-family:'Adamina', Georgia, Times, serif;font-size:12px;}
 			div#click {margin:0;padding:0;width:100%;height:100%;cursor:pointer;}
 			div#bottom {position: absolute; bottom: 0; left: 0;width:100%;border-top: 3px solid #7a9391; background:#bfd2d0;
@@ -139,9 +151,9 @@
 	</head>
 
   <body>
-  		<div id="logo"><a href="about/"><img src="img/gv.png" alt="GifVision" /></a></div>
+  		<div id="logo"><a href="/about/"><img src="<?php echo WEBROOT; ?>img/gv.png" alt="GifVision" /></a></div>
         <div id="click"></div>
-       	<div id="light"><img src="img/plus-gray.png" alt="Open Controls" /></div>
+       	<div id="light"><img src="<?php echo WEBROOT; ?>img/plus-gray.png" alt="Open Controls" /></div>
         <div id="bottom">
 	        <div id="sponsor">If you like this, please check out my other site, <a href="http://www.bureauoftrade.com/">Bureau of Trade</a>. Thanks!</div>
         	<div id="controls">
