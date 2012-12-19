@@ -16,7 +16,7 @@
 		<meta charset="utf-8">
 		<title>GifVision. <?php echo ucwords(urldecode($imagecategory)); ?></title>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="http://gifvision.com/js/jquery.backstretch.min.js"></script>
+		<script src="<?php echo WEBROOT; ?>js/jquery.backstretch.min.js"></script>
 		<script type="text/javascript">
 			var gifVision;
 			var imagecount = 0;
