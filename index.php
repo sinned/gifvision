@@ -162,6 +162,7 @@
         		Current Image: <span id="current-image"></span>
         	</div>
         </div>
+<center>&copy; 2013 GifVision</center
   </body>
 </html>
 
